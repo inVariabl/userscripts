@@ -16,3 +16,8 @@ Endless hours of time wasted watching other people argue online.
 _View Quizlets in a clean table, easily searchible_
 
 Made this so I could easily search quizlets for... uh... *studying*.
+
+## Canvas QuizBot
+_Store Correct Answers and autofills them when retaking the quiz_
+
+multiple choice only and can format MathTex to plain text. stores questions & answers in localhost

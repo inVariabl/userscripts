@@ -2,6 +2,7 @@
 // @name        Nitter Tweaks
 // @namespace   Violentmonkey Scripts
 // @include     https://nitter.net/*
+// @include     https://n.asak.gg/*
 // @grant       none
 // @version     1.0
 // @author      Daniel Crooks
@@ -35,13 +36,16 @@ function changeHeaderIcon() {
 function changeSuspensionMessage() {
     try {
         var statusText = document.querySelector("body > div > div > div > span").innerText;
+        var accountUnavailableRegex= /User ".*?" not found/;
         if (statusText == 'User "" has been suspended') {
             document.querySelector("body > div > div > div > span").innerText = "Account Suspended.";
-        } else {
+        } else if (statusText == 'Tweet not found') {
+            document.querySelector("body > div > div > div > span").innerText = "Tweet Deleted.";
+        } else if (accountUnavailableRegex.test(statusText)) {
             document.querySelector("body > div > div > div > span").innerText = "Account Unavailable.";
         }
     } catch (err) {
-        console.error("User not Suspended.");
+        //console.error("User not Suspended.");
     }
 }
 
